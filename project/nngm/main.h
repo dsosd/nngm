@@ -5,7 +5,7 @@ namespace tul{
 namespace project{
 namespace nngm{
 
-
+int main(int argc, char** argv);
 
 }
 }
