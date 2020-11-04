@@ -1,0 +1,37 @@
+template
+
+cmb_stack_get(_cmb_t00 "type")
+cmb_stack_get(_cmb_t01 "ns")
+cmb_ctx_get(_cmb_t02 "${_cmb_t00}_include_dirs")
+cmb_ctx_get(_cmb_t03 "${_cmb_t00}_compiler_flags")
+
+cmb_map_get(_cmb_t04 "ns_to_dir" "${_cmb_t01}")
+
+cmb_reg_obj(${_cmb_t01} "${_cmb_t02}" "${_cmb_t03}")
+
+cmb_objects(${_cmb_t01}
+%%__start FILE
+	"${_cmb_t04}/%%FILE%%"
+%%__end
+)
+
+%%__start DIR NS
+cmb_stack_push(recurv_type "${_cmb_t00}")
+cmb_stack_push(recurv_ns "${_cmb_t01}")
+
+cmb_map_set(ns_to_dir "%%NS%%" "%%DIR%%")
+cmb_include("%%NS%%" "${_cmb_t00}")
+cmb_stack_get(_cmb_t00 "recurv_type")
+
+cmb_stack_get(_cmb_t01 "recurv_ns")
+cmb_depend("${_cmb_t01}" "%%NS%%")
+
+cmb_stack_pop(recurv_ns)
+cmb_stack_pop(recurv_type)
+
+%%__end
+unset(_cmb_t04)
+unset(_cmb_t03)
+unset(_cmb_t02)
+unset(_cmb_t01)
+unset(_cmb_t00)
