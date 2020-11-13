@@ -3,6 +3,10 @@
 #include <fstream>
 #include <iostream>
 
+#include "generator.h"
+#include "partition.h"
+#include "verify.h"
+
 namespace tul{
 namespace project{
 namespace nngm{
@@ -18,6 +22,33 @@ int main(int argc, char** argv){
 		std::ifstream config(argv[1]);
 		//TODO use config
 	}
+
+	//TODO maybe use json instead
+	Partition_conf sentence_conf{
+		Partition_t::sentence,
+		2,
+		40
+	};
+	Partition_conf chapter_conf{
+		Partition_t::chapter,
+		200,
+		3000
+	};
+	Partition_conf global_conf{
+		Partition_t::global,
+		50000,
+		//TODO replace with magic::null
+		-1
+	};
+
+	Partition parter({sentence_conf, chapter_conf, global_conf});
+
+	Verify verifier(Verify_t::none);
+
+	Generator generator(&std::cout, verifier, parter, "seed");
+
+	//Prng prng;
+	//generator.run(prng);
 
 	//dummy output
 	std::cout << "meow";

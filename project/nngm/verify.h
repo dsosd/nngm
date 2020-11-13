@@ -5,7 +5,14 @@ namespace tul{
 namespace project{
 namespace nngm{
 
+enum class Verify_t{
+	none
+};
 
+class Verify{
+public:
+	Verify(Verify_t type_);
+};
 
 }
 }
