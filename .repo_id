@@ -1,5 +1,6 @@
 {
   "uuid": "c0821624_ffd78fa6_b8513361_706deea2",
   "owner": "dsosd",
-  "canonical_name": "nngm"
+  "canonical_name": "nngm",
+  "bootstrap_pull_url": "https://github.com/dsosd/nngm"
 }
