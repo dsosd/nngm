@@ -50,12 +50,18 @@ int main(int argc, char** argv){
 	//Prng prng;
 	//generator.run(prng);
 
+	Engine engine;
+
+	engine.init(Env{{"Sushi", "Marshmallow"}, {"Orange", "Phurr", "CCClaw"}});
+	engine.run();
+	engine.dump_out(std::cout);
+
 	//dummy output
-	std::cout << "meow";
-	for (int i = 1; i < 50000; ++i){
-		std::cout << " meow";
-	}
-	std::cout << "\n";
+	//std::cout << "meow";
+	//for (int i = 1; i < 50000; ++i){
+	//	std::cout << " meow";
+	//}
+	//std::cout << "\n";
 
 	return 0;
 }
